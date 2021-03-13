@@ -1,0 +1,13 @@
+1. SELECT SYSDATE AS "Astazi" FROM DUAL;
+2. SELECT nume, MONTHS_BETWEEN(SYSDATE, data_nastere) FROM studenti;
+3. SELECT to_char(data_nastere, 'Day') FROM studenti;
+4. SELECT concat('Elevul ', concat(prenume, concat(' este in grupa ', grupa))) FROM studenti;
+5. SELECT NVL(RPAD(bursa, 10, '$'), '$$$$$$$$$$') FROM studenti;
+6. SELECT lower(substr(nume, 1, 1)) || upper(substr(nume, 2, length(nume))) || ' ' || length(nume) FROM studenti WHERE nume LIKE 'B%';
+7. SELECT nume, data_nastere, ADD_MONTHS(data_nastere, 12 * CEIL((SYSDATE - data_nastere) / 365)), NEXT_DAY(ADD_MONTHS(data_nastere, 12 * CEIL((SYSDATE - data_nastere) / 365)), 'Sunday') FROM studenti;
+8. SELECT nume, prenume, to_char(data_nastere, 'mm') FROM studenti WHERE bursa IS NULL ORDER BY to_char(data_nastere, 'mm');  
+9. SELECT nume, bursa, DECODE(bursa, 450, 'premiul 1', 350, 'premiul 2', 250, 'premiul 3', NULL, 'mentiune') AS "Premiu" FROM studenti;
+10.SELECT TRANSLATE(nume, 'ia', 'ai') FROM studenti;
+11.SELECT nume, prenume, trunc(months_between (sysdate, data_nastere)/12) ANI, TRUNC (MOD (MONTHS_BETWEEN (SYSDATE, data_nastere), 12)) LUNI, trunc( sysdate - add_months(data_nastere, trunc(months_between (sysdate, data_nastere)/12)*12+ TRUNC (MOD (MONTHS_BETWEEN (SYSDATE, data_nastere), 12)))) zile from studenti;
+12.SELECT nume, TRUNC(ADD_MONTHS(SYSDATE, 1), 'month'), DECODE(bursa, 450, 450 * 1.1, 350, 350 * 1.15, 250, 250 * 1.2, NULL, 0) AS "Valoare bursa" FROM studenti;
+13.SELECT RPAD(nume || ' ', 1 + length(nume) + bursa / 50, '*') FROM studenti WHERE bursa IS NOT NULL;
