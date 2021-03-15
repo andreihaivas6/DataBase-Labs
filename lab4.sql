@@ -1,4 +1,4 @@
-		!!! Pb. Beanca !!!
+		
 
 1. SELECT s.nume, s.prenume, valoare, p.nume, p.prenume FROM studenti s JOIN note n ON s.nr_matricol = n.nr_matricol JOIN didactic d ON n.id_curs = d.id_curs JOIN profesori p ON d.id_prof = p.id_prof
 2. SELECT s.nume, s.prenume, n.valoare, c.titlu_curs FROM studenti s JOIN note n ON s.nr_matricol = n.nr_matricol JOIN cursuri c ON n.id_curs = c.id_curs WHERE n.valoare = 10 AND c.titlu_curs = 'BD';
